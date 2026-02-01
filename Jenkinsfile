@@ -27,7 +27,7 @@ pipeline {
             branches: [[name: "*/${params.BRANCH}"]],
             userRemoteConfigs: [[
                 url: 'https://github.com/manishamondal/POC_Pipeline/',
-                credentialsId: 'sfdx_jwt_key'
+                credentialsId: 'github_pat'
             ]]
         ])
     }
