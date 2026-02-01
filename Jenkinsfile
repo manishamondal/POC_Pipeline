@@ -21,10 +21,17 @@ pipeline {
 
     stages {
         stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
+    steps {
+        checkout([
+            $class: 'GitSCM',
+            branches: [[name: "*/${params.BRANCH}"]],
+            userRemoteConfigs: [[
+                url: 'https://github.com/manishamondal/POC_Pipeline/',
+                credentialsId: 'sfdx_jwt_key'
+            ]]
+        ])
+    }
+}
 
         stage('Build') {
             steps {
